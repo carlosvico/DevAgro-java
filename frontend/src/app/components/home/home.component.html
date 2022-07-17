@@ -1,0 +1,111 @@
+<header>
+  <mat-card class="card1">
+    <div class="card-content">
+      <span class="farm-title">Total de propriedades</span>
+      <span class="numbers">{{ fazendas.length }}</span>
+    </div>
+  </mat-card>
+  <mat-card class="card2">
+    <div class="card-content">
+      <span class="farm-title">Total de Funcionários</span>
+      <span class="numbers paint">{{ funcionarios.length }}</span>
+    </div>
+  </mat-card>
+</header>
+<main class="principal-main">
+  <mat-card class="read">
+    <header class="header-table">
+      <section class="title">
+        <h3>Propriedades cadastradas</h3>
+      </section>
+    </header>
+    <main class="main-table">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="farm-title-table" scope="col">Nome da Propriedade</th>
+              <th class="harvest-title" scope="col">Previsão de colheita</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- detalhes -->
+            <tr *ngFor="let fazenda of fazendas">
+              <td>
+                <div class="detalhes-linha">
+                  <span class="title-min">Nome da propriedade</span>
+                  <div class="detalhes-content">
+                    <span class="detalhes-name">{{ fazenda.name }}</span>
+                  </div>
+                </div>
+              </td>
+              <!-- alocado #### OBS: TROCAR POR PRóXIMA COLHEITA #####-->
+              <td>
+                <div class="detalhes-linha">
+                  <span class="title-min">Previsão colheita</span>
+                  <span class="detalhes-name">{{
+                    fazenda.ultimaColheita
+                  }}</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </mat-card>
+</main>
+<footer>
+  <mat-card class="card3" *ngIf="weatherData">
+    <span class="farm-title side paint">Previsão do tempo propriedades</span>
+    <div class="table-responsive-temp">
+      <table class="table table-hover">
+        <thead></thead>
+        <tbody>
+          <!-- detalhes -->
+          <tr>
+            <td>
+              <div class="detalhes-linha">
+                <div
+                  *ngFor="let fazenda; let weather; of: fazendas"
+                  class="detalhes-content"
+                >
+                  <span class="detalhes-name-temp">{{ fazenda.name }}</span>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div
+                *ngFor="let weather of weatherTemp"
+                class="detalhes-linha-temp"
+              >
+                <span class="numbers-temp"
+                  >{{ weather.main.temp | number: "1.0-0" }}˚C</span
+                >
+              </div>
+            </td>
+            <td>
+              <div *ngFor="let weather of weatherIcon" class="detalhes-linha">
+                <div *ngIf="weather == 'Clouds'">
+                  <span class="material-symbols-outlined"> cloud </span>
+                </div>
+                <div *ngIf="weather == 'Clear'">
+                  <span class="material-symbols-sharp"> clear_day </span>
+                </div>
+                <div *ngIf="weather == 'Rain'">
+                  <span class="material-symbols-sharp"> rainy </span>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card>
+  <mat-card class="card4">
+    <span class="farm-title side paint">Estoque de grãos</span>
+    <div class="graphic">
+      <canvas #graintGraphic></canvas>
+    </div>
+  </mat-card>
+</footer>

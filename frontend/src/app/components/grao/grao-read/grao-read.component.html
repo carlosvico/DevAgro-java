@@ -1,0 +1,93 @@
+<mat-card class="read">
+  <header>
+    <section class="title">
+      <h3>Lista de Graos</h3>
+    </section>
+    <section class="filters">
+      <div class="order">
+        <mat-icon> format_line_spacing</mat-icon>
+        <span> Ordenar</span>
+      </div>
+      <div class="filter">
+        <mat-icon>filter_list</mat-icon>
+        <span> Filtro</span>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Grãos</th>
+            <th scope="col">Fazenda Plantada</th>
+            <th scope="col">Colhido</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- detalhes -->
+          <tr *ngFor="let grao of graos">
+            <td>
+              <div class="detalhes-linha">
+                <span class="title-min">Detalhes dos Funcionários- </span>
+                <div class="imagem">
+                  <img
+                    src="assets/img/grao-default-photo.jpg"
+                    alt="perfil"
+                  />
+                </div>
+                <div class="detalhes-content">
+                  <span class="detalhes-name">{{ grao.nome }}</span>
+                  <p class="detalhes-date tcor">{{ grao.informacoes }}</p>
+                </div>
+              </div>
+            </td>
+            <!-- alocado -->
+            <td>
+              <div class="detalhes-linha">
+                <span class="title-min">Detalhes dos Funcionários- </span>
+                <div class="detalhes-content">
+                  <span class="detalhes-name">{{ grao.fazenda }}</span>
+                  <p class="detalhes-date">{{ grao.previsao_colheita }}</p>
+                </div>
+              </div>
+            </td>
+
+            <!-- ativo -->
+            <td>
+              <div class="detalhes-linha">
+                <span class="title-min">Detalhes dos Funcionários- </span>
+                <div class="div-active">
+                  <div class="active  {{ grao.ativo }}">
+                    {{ grao.ativo ? "sim" : "não" }}
+                  </div>
+                </div>
+              </div>
+            </td>
+
+            <td>
+              <div class="detalhes-linha">
+                <div class="icone" routerLink="/grao/update/{{ grao.id }}">
+                  <mat-icon>edit</mat-icon>
+                </div>
+                <div class="icone" routerLink="/grao/delete/{{ grao.id }}">
+                  <mat-icon>delete</mat-icon>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <div class="button-add" routerLink="/grao/create">+</div>
+
+  <footer>
+    <div class="footer-text">
+      <span>{{ graos.length }} grãos </span>
+    </div>
+  </footer>
+</mat-card>

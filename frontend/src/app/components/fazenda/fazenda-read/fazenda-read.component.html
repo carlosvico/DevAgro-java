@@ -1,0 +1,95 @@
+<mat-card class="read">
+  <header>
+    <section class="title">
+      <h3>Fazendas da Empresa</h3>
+    </section>
+    <section class="filters">
+      <div class="order">
+        <mat-icon> format_line_spacing</mat-icon>
+        <span> Ordenar</span>
+      </div>
+      <div class="filter">
+        <mat-icon>filter_list</mat-icon>
+        <span>Filtro</span>
+      </div>
+    </section>
+  </header>
+  <main>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nome da Propriedade</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Grão</th>
+            <th scope="col">Previsão de Colheita</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- detalhes -->
+          <tr *ngFor="let fazenda of fazendas">
+            <td>
+              <div class="detalhes-linha">
+                <span class="title-min">Nome da Propriedade - </span>
+                <div class="detalhes-content">
+                  <span class="detalhes-name">{{ fazenda.name }}</span>
+                </div>
+              </div>
+            </td>
+            <!-- alocado -->
+            <td>
+              <div class="detalhes-linha">
+                <span class="title-min">Endereço - </span>
+                <div class="detalhes-content">
+                  <span class="detalhes-name">{{ fazenda.endereco }}</span>
+                </div>
+              </div>
+            </td>
+            <!-- cargo -->
+            <td>
+              <div class="detalhes-linha">
+                <span class="title-min">Grão - </span>
+                <span class="detalhes-name">{{ fazenda.grao }}</span>
+              </div>
+            </td>
+            <!-- ativo -->
+            <td>
+              <div class="detalhes-linha">
+                <span class="title-min">Previsão de Colheita - </span>
+                <span class="detalhes-name">{{
+                  fazenda.previsaoColheita
+                }}</span>
+              </div>
+            </td>
+
+            <td>
+              <div class="detalhes-linha">
+                <div
+                  class="icone"
+                  routerLink="/fazenda/update/{{ fazenda.id }}"
+                >
+                  <mat-icon>edit</mat-icon>
+                </div>
+                <div
+                  class="icone"
+                  routerLink="/fazenda/delete/{{ fazenda.id }}"
+                >
+                  <mat-icon>delete</mat-icon>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <div class="button-add" routerLink="/fazenda/create">+</div>
+
+  <footer>
+    <div class="footer-text">
+      <span>{{ fazendas.length }} fazendas </span>
+    </div>
+  </footer>
+</mat-card>
