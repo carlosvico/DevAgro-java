@@ -11,7 +11,6 @@
 
 Para executrar a aplicação, siga os seguintes passos:
 
-* Acesse o terminal e clone o projeto ***git clone git@github.com:DEVin-Senior/M2P2-DEVAgro-Squad03.git***
 * Acesse a pasta ***M2P2-DEVAgro-Squad03/backend*** e execute o comando ***NPM INSTALL***
 * Após a aplicação finalizar a instalação das dependências, execute o comando ***NPM START***
 * Acesse a pasta ***M2P2-DEVAgro-Squad03/frontend***
